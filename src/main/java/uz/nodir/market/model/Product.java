@@ -9,8 +9,12 @@ public class Product {
     private int count;
     private String name;
     private Double price;
+    private int stateId;
     private Date createdDate;
 
+    public Product(){
+
+    }
     public UUID getId() {
         return id;
     }
@@ -54,5 +58,25 @@ public class Product {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public int getStateId() {
+        return stateId;
+    }
+
+    public void setStateId(int stateId) {
+        this.stateId = stateId;
+    }
+
+    public String getState(){
+        if (stateId == ProductState.WARNING.getStateId())
+            return "productni srogi yaqinda tugaydi";
+        else if (stateId == ProductState.DANGER.getStateId()) {
+            return "productni srogi tugadi";
+        }else return "product sveji";
     }
 }
